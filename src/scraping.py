@@ -11,7 +11,7 @@ def scraping_de(url):
         soup = BeautifulSoup(u, "html5lib")
 
     xls_hrefs = soup.find_all("a", href=re.compile("xls"))
-    xls_file_name = [t.get("title").lower().replace(" ", "_") for t in xls_hrefs]
+    xls_file_name = [f"{t.get('title').lower().replace(' ', '_')}.xlsx" for t in xls_hrefs]
     xls_ = [f"{index_page}{h.get('href')}" for h in xls_hrefs]
 
     xls_content = []
